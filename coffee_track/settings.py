@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from template_partials.apps import wrap_loaders
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django_htmx",
     "grinder.apps.GrinderConfig",
+    "web.apps.WebConfig",
+    "expense.apps.ExpenseConfig",
+    "brew.apps.BrewConfig",
+    "beans.apps.BeansConfig",
+    "tools.apps.ToolsConfig",
+    "base.apps.BaseConfig",
+    "template_partials",
 ]
 
 MIDDLEWARE = [
@@ -62,6 +70,7 @@ ROOT_URLCONF = 'coffee_track.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'NAME': 'djangotemplate',
         'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -70,10 +79,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'coffee_track.context_processors.htmx_request_processor'
             ],
         },
     },
 ]
+
+wrap_loaders('djangotemplate')
 
 WSGI_APPLICATION = 'coffee_track.wsgi.application'
 

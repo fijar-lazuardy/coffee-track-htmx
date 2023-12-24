@@ -1,0 +1,50 @@
+{% extends base_template %}
+
+{% block content %}
+<div class="w-1/2 text-center flex">
+<div role="tablist" class="tabs tabs-boxed">
+  <a role="tab" class="tablinks tab tab-active" onclick="openTools(event, 'dripper')">Dripper</a>
+  <a role="tab" class="tablinks tab" onclick="openTools(event, 'grinder')">Grinder</a>
+</div>
+</div>
+
+<div class="tabcontent displayed" id="dripper">
+<div class="flex items-center justify-center">
+{% if drippers %}
+{% for dripper in drippers %}
+<div class="card w-96 bg-base-100 shadow-xl basis-1/4 gap-x-6">
+  <div class="card-body">
+    <h2 class="card-title">Card title!</h2>
+    <p>{{ dripper }}</p>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
+<a class="btn btn-secondary mt-24" onclick="my_modal_5.showModal()">
+  Add dripper
+</a>
+{% include 'modal/add-dripper.html' %}
+{% block modal %}
+{% endblock %}
+</div>
+
+<div class="tabcontent" id="grinder" style="display: none;">
+<div class="grid grid-cols-3 gap-4">
+{% if grinders %}
+{% for grinder in grinders %}
+<div class="card w-96 bg-base-100 shadow-xl grid place-items-center">
+  <div class="card-body">
+    <h2 class="card-title">Card title!</h2>
+    <p>{{ grinder }}</p>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+No grinder found
+</div>
+</div>
+
+{% endblock %}
+

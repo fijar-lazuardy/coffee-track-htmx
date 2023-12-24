@@ -1,6 +1,6 @@
 from django.urls import path
-from grinder.views import grinder_all
+from grinder.views import *
 
 urlpatterns = [
-    path("", grinder_all)
+    path("", grinder, name="grinder"),
 ]

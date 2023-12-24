@@ -3,18 +3,15 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.23/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
     <title>{% block title %}My amazing site{% endblock %}</title>
-    <script>
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
 </head>
 
-<body class="bg-white dark:bg-black">
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div id="sidebar">
         {% block navbar %}
             {% include 'navbar.html' %}
@@ -22,8 +19,9 @@
     </div>
 
 
-    <div id="content">
+    <div id="content" class="w-screen text-center">
         {% block content %}{% endblock %}
     </div>
 </body>
+<script src="{% static 'js/script.js' %}"></script>
 </html>
