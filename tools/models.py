@@ -1,11 +1,6 @@
 from django.db import models
-from ulid import ULID
-
 from base.models import BaseModel
 
-
-def generate_ulid():
-    return str(ULID())
 #
 # # Create your models here.
 #
@@ -40,4 +35,12 @@ class EspressoMachine(BaseModel):
     def __str__(self):
         return "{} {}".format(self.brand, self.model)
 
+class Grinder(BaseModel):
+    model = models.CharField(max_length=128, null=False)
+    brand = models.CharField(max_length=128, null=False)
 
+    class Meta:
+        db_table = "grinder"
+
+    def __str__(self):
+        return "{} {}".format(self.brand, self.model)

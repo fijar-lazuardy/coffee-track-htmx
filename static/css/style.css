@@ -9,3 +9,17 @@
 .displayed {
   display: block;
 }
+
+#modal_test.closing {
+	/* Animate when closing */
+	animation-name: fadeOut;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+#modal_test.closing > .modal-box {
+	/* Animate when closing */
+	animation-name: zoomOut;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}

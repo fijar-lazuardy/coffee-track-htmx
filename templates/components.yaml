@@ -1,0 +1,3 @@
+components:
+  modal_base: "components/modal-base.html"
+  form_base: "components/form-base.html"

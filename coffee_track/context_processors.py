@@ -1,5 +1,4 @@
-
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest
 from django_htmx.middleware import HtmxDetails
 
 # Create your views here.

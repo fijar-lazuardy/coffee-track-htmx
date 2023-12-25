@@ -1,0 +1,12 @@
+{% load slippers %}
+<dialog id="modal_test" class="modal" _="on closeModal add .closing then wait for animationend then remove me">
+  <div class="modal-box" _="on click trigger closeModal">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="font-bold text-lg">Hello!</h3>
+    {% #form_base form=form submit_url=submit_url container_id=container_id %}
+      {{ children }}
+    {% /form_base %}
+  </div>
+</dialog>

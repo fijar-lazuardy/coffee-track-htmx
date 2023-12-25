@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "django_htmx",
-    "grinder.apps.GrinderConfig",
     "web.apps.WebConfig",
     "expense.apps.ExpenseConfig",
     "brew.apps.BrewConfig",
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     "tools.apps.ToolsConfig",
     "base.apps.BaseConfig",
     "template_partials",
+    "slippers",
 ]
 
 MIDDLEWARE = [

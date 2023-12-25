@@ -1,0 +1,6 @@
+
+    <form class="p-4 md:p-5">
+      <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        {{children}}
+    <input type="submit" value="Submit" class="btn btn-secondary text-black dark:text-white" hx-post="{{submit_url}}" hx-swap="beforeend" hx-target="#{{ container_id }}" _="on click trigger closeModal">
+    </form>

@@ -6,3 +6,4 @@ from tools.models import *
 admin.site.register(Scale)
 admin.site.register(Dripper)
 admin.site.register(EspressoMachine)
+admin.site.register(Grinder)

@@ -1,4 +1,6 @@
 {% extends base_template %}
+{% load slippers %}
+{% load partials %}
 
 {% block content %}
 <div class="w-1/2 text-center flex">
@@ -8,26 +10,34 @@
 </div>
 </div>
 
-<div class="tabcontent displayed" id="dripper">
-<div class="flex items-center justify-center">
-{% if drippers %}
-{% for dripper in drippers %}
-<div class="card w-96 bg-base-100 shadow-xl basis-1/4 gap-x-6">
+{% startpartial dripper-items %}
+<div class="card w-1/4 bg-base-100 shadow-xl basis-1/4 gap-x-6">
   <div class="card-body">
     <h2 class="card-title">Card title!</h2>
     <p>{{ dripper }}</p>
   </div>
 </div>
+{% endpartial %}
+
+<div class="tabcontent displayed w-full" id="dripper">
+<div class="flex flex-wrap items-center justify-center" id="dripper-container">
+{% if drippers %}
+{% for dripper in drippers %}
+  {% partial dripper-items %}
 {% endfor %}
 {% endif %}
 </div>
 
-<a class="btn btn-secondary mt-24" onclick="my_modal_5.showModal()">
+<a class="btn btn-secondary mt-24" onclick="modal_test.showModal()">
   Add dripper
 </a>
-{% include 'modal/add-dripper.html' %}
-{% block modal %}
-{% endblock %}
+{% url 'tools' as url_tools %}
+{% #modal_base form=form submit_url=url_tools container_id="dripper-container" %}
+      {% for field in dripper_form %}
+      {{ field.label_tag }} <br><br> {{ field }}
+        <br>
+      {% endfor %}
+{% /modal_base %}
 </div>
 
 <div class="tabcontent" id="grinder" style="display: none;">
@@ -42,7 +52,6 @@
 </div>
 {% endfor %}
 {% endif %}
-No grinder found
 </div>
 </div>
 
